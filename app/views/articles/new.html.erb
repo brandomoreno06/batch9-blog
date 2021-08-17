@@ -1,0 +1,25 @@
+<%= form_with scope: :article, url: create_article_path, local: true do |f| %>
+
+<div>
+  <% @article.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %>
+</div>
+
+
+<p>
+  <%= f.label :name %><br/>
+  <%= f.text_field :name %>  
+</p>
+
+
+<p>
+  <%= f.label :body %><br/>
+  <%= f.text_field :body %>
+</p>
+
+<p>
+  <%= f.submit %>
+</p>
+
+<% end %>

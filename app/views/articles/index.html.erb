@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.id %></td>
+      <td><%= article.name %></td>
+      <td><%= article.body %></td>
+
+      <td><%= link_to 'Edit', edit_article_path(article.id) %></td>
+      <td><%= link_to 'Delete', delete_article_path(article.id),
+        method: :delete,
+        data: {confirm: "Are you sure you want ot delete this?" } %>
+      </td>
+    <% end %>
+  </tbody>
+
+</table>
+
+<%= link_to 'New Article', new_article_path %>
