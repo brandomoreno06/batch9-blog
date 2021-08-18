@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--themColor_2);
+}
+
+:root {
+    --themeColor: #b2ad7f;
+    --themColor_2: #a2b9bc;
+}

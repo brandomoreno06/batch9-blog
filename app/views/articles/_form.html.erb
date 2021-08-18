@@ -1,26 +1,25 @@
-<%= form_with scope: :article, url: update_article_path, local: true do |f| %>
+<div class="article__form">
+
+  <div class="error_messages">
+    <% article.errors.full_messages.each do |message| %>
+      <p><%= message %></p>
+    <% end %>
+  </div>
 
 
-<div>
-  <% article.errors.full_messages.each do |message| %>
-    <p><%= message %></p>
-  <% end %>
+  <p>
+    <%= f.label :name, "Title" %><br/>
+    <%= f.text_field :name %>  
+  </p>
+
+
+  <p>
+    <%= f.label :body, "Content" %><br/>
+    <%= f.text_area :body %>
+  </p>
+
+  <p>
+    <%= f.submit class: "article__submit" %>
+  </p>
+
 </div>
-
-
-<p>
-  <%= f.label :name %><br/>
-  <%= f.text_field :name %>  
-</p>
-
-
-<p>
-  <%= f.label :body %><br/>
-  <%= f.text_field :body %>
-</p>
-
-<p>
-  <%= f.submit %>
-</p>
-
-<% end %>

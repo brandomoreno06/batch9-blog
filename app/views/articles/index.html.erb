@@ -1,27 +1,37 @@
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Body</th>
-    </tr>
-  </thead>
+<div class="articles__page">
+  <h1>Blogs</h1>
+  <h4 class="subtitle">Hello Folks! It's time to explore this blogsite.</h4>
+  <%= link_to 'Create New Article', new_article_path,  class: "article__new" %>
 
-  <tbody>
-    <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.id %></td>
-      <td><%= article.name %></td>
-      <td><%= article.body %></td>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Modify</th>
+      </tr>
+    </thead>
 
-      <td><%= link_to 'Edit', edit_article_path(article.id) %></td>
-      <td><%= link_to 'Delete', delete_article_path(article.id),
-        method: :delete,
-        data: {confirm: "Are you sure you want ot delete this?" } %>
-      </td>
-    <% end %>
-  </tbody>
+    <tbody>
+      <% @articles.each.with_index do |article, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td class="article__name"><%= article.name %></td>
+          <td class="article__body"><%= article.body %></td>
 
-</table>
+          <td class="artilce__modify">
+            <span><%= link_to 'Edit', edit_article_path(article.id) %></span>
+            <span>
+              <%= link_to 'Delete', delete_article_path(article.id),
+              method: :delete,
+              data: {confirm: "Are you sure you want ot delete this?" } 
+              %>
+            </span>
+          </td>
+        </tr> 
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<%= link_to 'New Article', new_article_path %>

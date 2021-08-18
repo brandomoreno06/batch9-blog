@@ -1,28 +1,6 @@
 <h1>Edit Article</h1>
 
-<%= form_with scope: :article, url: update_article_path, method: :patch, local: true do |f| %>
 
-<p>Id: <%= @article.id %></p>
-<div>
-  <% @article.errors.full_messages.each do |message| %>
-    <p><%= message %></p>
-  <% end %>
-</div>
-
-
-<p>
-  <%= f.label :name %><br/>
-  <%= f.text_field :name %>  
-</p>
-
-
-<p>
-  <%= f.label :body %><br/>
-  <%= f.text_field :body %>
-</p>
-
-<p>
-  <%= f.submit %>
-</p>
-
+<%= form_with scope: :article, url: update_article_path, method: :patch, local: true do |form| %>
+  <%= render 'form', article: @article, f: form %>
 <% end %>

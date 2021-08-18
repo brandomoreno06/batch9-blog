@@ -1,0 +1,30 @@
+.article__form {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+}
+
+%inputBoxes {
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 100%;
+}
+
+#article_name {
+  @extend %inputBoxes;
+  height: 30px;
+  border: none;
+  outline: none;
+}
+
+#article_body {
+  @extend %inputBoxes;
+  min-height: 300px;
+}
+
+
+.article__submit {
+  box-sizing: border-box;
+  width: 100%;
+  height: 30px;
+}
