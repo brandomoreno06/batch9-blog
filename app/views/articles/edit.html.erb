@@ -1,6 +1,9 @@
-<h1>Edit Article</h1>
+<div class="edit">
+  <%= link_to 'Return to Homepage', articles_path, class: "return__link" %>
+  <h1>(Editing) <%= @article.name %></h1>
+  <h5>Last updated: <%= @article.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></h5>
 
-
-<%= form_with scope: :article, url: update_article_path, method: :patch, local: true do |form| %>
-  <%= render 'form', article: @article, f: form %>
-<% end %>
+  <%= form_with scope: :article, url: update_article_path, method: :patch, local: true, class: "article__form" do |form| %>
+    <%= render 'form', article: @article, f: form %>
+  <% end %>
+</div>

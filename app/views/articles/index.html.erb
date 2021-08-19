@@ -1,37 +1,25 @@
 <div class="articles__page">
-  <h1>Blogs</h1>
+  <%= render 'header' %>
   <h4 class="subtitle">Hello Folks! It's time to explore this blogsite.</h4>
   <%= link_to 'Create New Article', new_article_path,  class: "article__new" %>
 
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Title</th>
-        <th>Content</th>
-        <th>Modify</th>
-      </tr>
-    </thead>
+  <div class="articles">
+    <% @articles.each do |article| %>
+      <div class="article__item">
+        <div class="article__content">
+          <div class="article__content__header">
+            <h2 class="article__name"><%= article.name %></h2>
+            <div class="article__modify">
+              <%= link_to 'View', show_article_path(article) %>
+              <%= render 'modify', article: article %>
+            </div>
+          </div>
 
-    <tbody>
-      <% @articles.each.with_index do |article, index| %>
-        <tr>
-          <td><%= index + 1 %></td>
-          <td class="article__name"><%= article.name %></td>
-          <td class="article__body"><%= article.body %></td>
+          <%= truncate("<p>"+ article.body + "<p>", escape: false, length: 500, separator: ' ') { link_to "Read more", show_article_path(article), class: 'link__readMore' } %>
+        </div>
+      </div>
+    <% end %>
 
-          <td class="artilce__modify">
-            <span><%= link_to 'Edit', edit_article_path(article.id) %></span>
-            <span>
-              <%= link_to 'Delete', delete_article_path(article.id),
-              method: :delete,
-              data: {confirm: "Are you sure you want ot delete this?" } 
-              %>
-            </span>
-          </td>
-        </tr> 
-      <% end %>
-    </tbody>
-  </table>
+  </div>
 </div>
 

@@ -1,3 +1,8 @@
-<%= form_with scope: :article, url: create_article_path, local: true do |form| %>
-  <%= render 'form', article: @article, f: form %>
-<% end %>
+<div class="new">
+  <h1>Write an Article</h1>
+
+  <%= form_with scope: :article, url: create_article_path, local: true, class: "article__form" do |form| %>
+    <%= render 'form', article: @article, f: form %>
+  <% end %>
+
+</div>
