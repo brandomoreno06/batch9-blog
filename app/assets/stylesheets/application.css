@@ -16,11 +16,17 @@
 
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--themColor_2);
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--themColor_2);
+  margin: 0;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
 :root {
-    --themeColor: #b2ad7f;
-    --themColor_2: #a2b9bc;
+  --themeColor: #b2ad7f;
+  --themColor_2: #a2b9bc;
 }

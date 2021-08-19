@@ -7,6 +7,10 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+
+    if @article == nil
+      redirect_to articles_path
+    end
   end
 
   def  find_name
@@ -43,7 +47,6 @@ class ArticlesController < ApplicationController
     else
       render :edit
     end
-    # render plain: params[:article].inspect
   end
 
   

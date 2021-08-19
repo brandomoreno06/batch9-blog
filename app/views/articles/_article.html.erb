@@ -1,11 +1,11 @@
-<div> 
-  ID: <%= article.id %>
-</div>
+<div class="article__show">
+  <div class="article__show__header">
+    <h1><%= article.name %></h1>
+    <div class="article__modify article__modify--show">
+      <%= render 'modify', article: article %>
+    </div>
+  </div>
+  <span><%= article.updated_at %></span>
 
-<div> 
-  Name: <%= article.name %>
-</div>
-
-<div> 
-  Body: <%= article.body %>
+  <div class="article__body"><%= article.body %></div>
 </div>
