@@ -6,10 +6,8 @@ class ArticlesController < ApplicationController
 
 
   def show
-    @article = Article.find(params[:id])
-
-    if @article == nil
-      redirect_to articles_path
+    if (@article = Article.find_by(id: params[:id])).blank?
+      render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
     end
   end
 
