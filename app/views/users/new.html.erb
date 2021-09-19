@@ -1,0 +1,17 @@
+<% @user.errors.full_messages.each do |message|%>
+  <%= message %>
+<% end %>
+
+<%= form_with scope: :user, url: create_user_path, local: true do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name, placeholder: "First Name" %>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name, placeholder: "Last Name" %>
+  <%= f.label :username %>
+  <%= f.text_field :username, placeholder: "Username" %>
+  <%= f.label :password %>
+  <%= f.password_field :password, placeholder: "Password" %>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+  <%= f.submit "Create Account" %>
+<% end %>

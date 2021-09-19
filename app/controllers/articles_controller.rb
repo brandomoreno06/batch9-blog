@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate!, except: [:index]
+  before_action :find_article, only: [:show, :edit, :update, :delete]
+  before_action :article_owner?, only:[:edit, :update, :delete]
 
   def index
     @articles = Article.all
@@ -6,9 +9,6 @@ class ArticlesController < ApplicationController
 
 
   def show
-    if (@article = Article.find_by(id: params[:id])).blank?
-      render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
-    end
   end
 
   def  find_name
@@ -23,9 +23,10 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-
+    @article.user_id = current_user.id
+    
     if @article.save
-      redirect_to articles_path
+      redirect_to articles_path, notice: "Successfully updated created a blog."
     else
       render :new
     end
@@ -33,23 +34,17 @@ class ArticlesController < ApplicationController
 
   
   def edit
-    @article = Article.find(params[:id])
   end
 
-
   def update
-    @article = Article.find(params[:id])
-
     if @article.update(article_params)
-      redirect_to articles_path
+      redirect_to articles_path, notice: "Successfully updated a blog."
     else
       render :edit
     end
   end
 
-  
   def delete
-    @article = Article.find(params[:id])
     @article.destroy
 
     redirect_to articles_path
@@ -62,4 +57,13 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:name, :body)
   end
 
+  def find_article
+    @article = Article.find(params[:id])
+  end
+
+  def article_owner?
+    unless current_user.try{id} == @article.user_id
+      redirect_to root_path, notice: "Unauthorized action" and return 
+    end
+  end
 end
