@@ -1,0 +1,32 @@
+<span class="btn p-3" data-bs-toggle="modal" data-bs-target="#article_<%=article.id%>Comments" data-toggle="tooltip" data-placement="top" title="View or add comment"><%= article.comments.count %> <%= article.comments.count > 1 ? 'Comments' : 'Comment' %></span>
+
+<!-- Modal -->
+<div class="modal fade" id="article_<%=article.id%>Comments" tabindex="-1" role="dialog" aria-labelledby="article_<%=article.id%>CommentsTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title article__name" id="article_<%=article.id%>CommentsLongTitle"><%= Article.find_by(id: article.id).name %></h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% if article.comments.empty? %>
+          <span>Be the first to comment on this article.</span>
+        <% else %>
+          <% article.comments.each do |comment| %>
+            <div class="border-bottom"><%= comment.body %>
+              <% if comment.commenter.to_i == current_user.try{id}.to_i %>
+                <%= link_to "Delete comment", article_comment_path(article, comment), method: :delete %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+        <%= form_with scope: :comment, url: article_comments_path(article) do |f| %>
+          <%= f.text_field :body, class: "form-control mt-3" %>
+          <%= f.submit 'Comment', class: "btn btn-secondary form-control" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

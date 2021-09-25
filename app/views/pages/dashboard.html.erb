@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="text-center">Here are the blogs that you have posted.</h1>
+  
+  <div class="articles container d-flex flex-wrap">
+    <% @articles.each do |article| %>
+      <div class="container-fluid col-xs-12 col-sm-12 col-lg-5 mb-5 mt-5 p-0 article__container">
+          <div class="image__container">
+            <%= image_tag 'blog_img_default', class: 'article__image' %>
+          </div>
+          <%= render 'articles/article_peek', article: article %>
+          <%= render 'articles/comment_modal', article: article %>
+        </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="article__item p-4">
+  <div class="article__content">
+    <div class="article__content__header">
+      <h2 class="article__name"><%= article.name %></h2>
+      <div class="article__modify">
+        <%= link_to show_article_path(article) do %>
+          <i class="bi bi-book-half"></i>
+        <% end %>
+        <%= render 'articles/modify', article: article %>
+      </div>
+    </div>
+    <span><%= User.find_by(id: article.user_id).try{username} %></span>
+    <%= truncate("<p>#{article.body}<p>", escape: false, length: 300, separator: ' ') %>
+  </div>
+</div>

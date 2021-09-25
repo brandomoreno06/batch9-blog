@@ -1,1 +1,14 @@
-<%= render 'article', article: @article %>
+<div class="article__show">
+  <div class="image__container">
+    <%= image_tag 'blog_img_default', class: 'article__image' %>
+  </div>
+  <div class="article__show__header">
+    <h1><%= @article.name %></h1>
+    <div class="article__modify article__modify--show">
+      <%= render 'articles/modify', article: @article %>
+    </div>
+  </div>
+  <span><%= @article.updated_at %></span>
+
+  <div class="article__body"><%= @article.body %></div>
+</div>

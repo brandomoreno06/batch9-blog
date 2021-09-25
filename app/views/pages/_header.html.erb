@@ -1,14 +1,23 @@
-<div class="header">
-  <h1>Blogs</h1>
+<div class="header container-fluid">
+  <%= link_to articles_path do %>
+    <h1>Blogify</h1>
+  <% end %>
+
   <nav>
-    <%= link_to 'Home', home_path %>
+    <%= link_to 'Home', articles_path %>
+    <% if current_user %>
+      <%= link_to 'Dashboard', dashboard_path %>
+    <% end %>
+    <%= link_to 'Create Article', new_article_path %>
   </nav>
 
+  <div>
     <% if user_logged_in? %>
-      <%= current_user.username %>
+      <span>Logged in as<strong> <%= current_user.username %></strong></span>
       <%= link_to "Logout", delete_session_path, method: :delete %>
-      <%= link_to "Delete Account", delete_user_path(current_user), method: :delete %>
     <% else %>
       <%= link_to "Login", login_path %>
+      <%= link_to "Sign Up", create_user_path %>
     <% end %>
+  </div>
 </div>

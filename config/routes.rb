@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   #pages
   get '/home' => 'pages#home'
+  get '/dashboard' => 'pages#dashboard'
 
   #users
   get "/account" => "users#index", as: "user_account"

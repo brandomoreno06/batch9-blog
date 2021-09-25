@@ -1,36 +1,16 @@
 <div class="articles__page">
-  <h4 class="subtitle">Hello Folks! It's time to explore this blogsite.</h4>
-  <%= link_to 'Create New Article', new_article_path,  class: "article__new" %>
+  <h1 class="subtitle">Hello Folks! It's time to explore this blogsite.</h1>
 
-  <div class="articles">
+  <div class="articles container d-flex flex-wrap">
     <% @articles.each do |article| %>
-      <div class="article__item">
-        <div class="article__content">
-          <div class="article__content__header">
-            <h2 class="article__name"><%= article.name %></h2>
-            <div class="article__modify">
-              <%= link_to 'View', show_article_path(article) %>
-              <%= render 'modify', article: article %>
-            </div>
-          </div>
-
-          <%= truncate("<p>#{article.body}<p>", escape: false, length: 500, separator: ' ') { link_to "Read more", show_article_path(article), class: 'link__readMore' } %>
+      <div class="container-fluid col-xs-12 col-sm-12 col-lg-5 mb-5 mt-5 p-0 article__container">
+        <div class="image__container">
+          <%= image_tag 'blog_img_default', class: 'article__image' %>
         </div>
+        <%= render 'article_peek', article: article %>
+        <%= render 'comment_modal', article: article %>
       </div>
-
-      <h5>Post a comment:</h5>
-      <%= form_with scope: :comment, url: article_comments_path(article) do |f| %>
-        <%= f.text_field :body %>
-        <%= f.submit %>
-      <% end %>
-
-      <h5>Comments</h5>
-      <% article.comments.each do |comment| %>
-        <div><%= comment.body %></div>
-        <%= link_to "Delete comment", article_comment_path(article, comment), method: :delete %>
-      <% end %>
     <% end %>
-
   </div>
 </div>
 

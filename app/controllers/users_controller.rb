@@ -14,8 +14,10 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     
     if @user.save
+      flash[:notice] = 'Successfully registered. You may now sign in.'
       redirect_to login_path
     else
+      flash.now[:error] = @user.errors.full_messages.join(' -------- ')
       render :new
     end
   end
