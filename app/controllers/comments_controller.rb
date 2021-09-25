@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :find_article
   before_action :find_comment, only: [:destroy]
   before_action :comment_owner?, only: [:destroy]
+  before_action :authenticate!
 
   def create
     @comment = @article.comments.new(comment_params)
@@ -20,6 +21,7 @@ class CommentsController < ApplicationController
   end
 
   private
+  
   def comment_params
     params.require(:comment).permit(:body)
   end

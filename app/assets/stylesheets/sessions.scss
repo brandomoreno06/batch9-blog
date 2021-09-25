@@ -1,3 +1,30 @@
-// Place all the styles related to the sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.landing__info {
+  margin-bottom: 5em;
+  text-align: center;
+}
+
+.landing__info h1 {
+  color: var(--themeColor2);
+}
+
+.landing__info h2 {
+  color: var(--themeColor5);
+}
+
+.form-control {
+  border-color: var(--themeColor2) !important;
+}
+
+.btn.form-control {
+  background-color: var(--themeColor3) !important;
+  border-color: var(--themeColor2);
+}
+
+.btn.form-control:hover {
+  background-color: var(--themeColor2) !important;
+}
+
+.form-control:focus {
+  border-color: var(--themeColor2) !important;
+  box-shadow: 0 0 10px var(--themeColor2) !important;
+}

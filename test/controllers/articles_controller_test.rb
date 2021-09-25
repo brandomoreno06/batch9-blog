@@ -31,7 +31,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
                                       user_id: users(:one).id
                                     }}
     end
-    assert_redirected_to articles_path, "Failed to redirect to articles_path after creating an article"
+    assert_redirected_to dashboard_path, "Failed to redirect to articles_path after creating an article"
   end
 
   
@@ -49,7 +49,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
                                                   }
 
     assert_equal "Updated", Article.find_by(id: @article.id).name, "Failed to update an article"
-    assert_redirected_to articles_path, "Failed to redirect to articles_path"
+    assert_redirected_to dashboard_path, "Failed to redirect to articles_path"
   end
   
   test "should delete an article" do
