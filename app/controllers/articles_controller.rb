@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
     @article.user_id = current_user.id
     
     if @article.save
-      redirect_to articles_path, notice: "Successfully updated created a blog."
+      redirect_to dashboard_path, notice: "Successfully updated created a blog."
     else
       render :new
     end
@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
 
   def update
     if @article.update(article_params)
-      redirect_to articles_path, notice: "Successfully updated a blog."
+      redirect_to dashboard_path, notice: "Successfully updated your blog."
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
   def delete
     @article.destroy
 
-    redirect_to articles_path
+    redirect_to dashboard_path
   end
 
 

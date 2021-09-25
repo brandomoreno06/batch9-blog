@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate!
-    redirect_to root_path, alert: "Sorry, you are not signed in." and return unless user_logged_in?
+    redirect_to login_path, alert: "Sorry, you are not signed in." and return unless user_logged_in?
   end
 
   def record_not_found

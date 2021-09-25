@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :destroy]
   before_action :account_owner?, only: [:show, :destroy]
+  before_action :verify_logged_in, only: [:new, :create]
 
   def index
   end
@@ -40,5 +41,9 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
+  end
+
+  def verify_logged_in
+    redirect_to home_path, notice: "You already have an existing account" if user_logged_in?
   end
 end

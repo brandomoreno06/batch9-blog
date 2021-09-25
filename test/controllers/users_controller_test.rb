@@ -8,6 +8,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should go to /signup path" do
+    delete delete_session_path
     get new_user_path
     assert_response :success
   end
@@ -18,6 +19,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create a user" do
+    delete delete_session_path
     assert_difference "User.count", 1, "Failed to create a user" do
       post create_user_path, params: { user: {
                                           first_name: "String",
