@@ -1,6 +1,6 @@
-<div class="article__show">
+<div class="article__show container">
   <div class="image__container">
-    <%= image_tag 'blog_img_default', class: 'article__image' %>
+    <%= render 'articles/article_image', article: @article %>
   </div>
   <div class="article__show__header">
     <h1><%= @article.name %></h1>
@@ -10,5 +10,5 @@
   </div>
   <span><%= @article.updated_at %></span>
 
-  <div class="article__body"><%= @article.body %></div>
+  <div class="article__body"><%= simple_format(@article.body) %></div>
 </div>

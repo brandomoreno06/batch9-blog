@@ -1,0 +1,5 @@
+<% if article.image.present? %>
+  <%= image_tag article.image, class: 'article__image' %>
+<% else %>
+  <%= image_tag 'blog_img_default', class: 'article__image' %>
+<% end %>

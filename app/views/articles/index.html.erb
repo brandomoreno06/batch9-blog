@@ -4,10 +4,12 @@
   <div class="articles container d-flex flex-wrap">
     <% @articles.each do |article| %>
       <div class="container-fluid col-xs-12 col-sm-12 col-lg-5 mb-5 mt-5 p-0 article__container">
-        <div class="image__container">
-          <%= image_tag 'blog_img_default', class: 'article__image' %>
+        <div>
+          <div class="image__container">
+            <%= render 'article_image', article: article %>
+          </div>
+          <%= render 'article_peek', article: article %>
         </div>
-        <%= render 'article_peek', article: article %>
         <%= render 'comment_modal', article: article %>
       </div>
     <% end %>
