@@ -1,4 +1,4 @@
-<span class="btn p-3" data-bs-toggle="modal" data-bs-target="#article_<%=article.id%>Comments" data-toggle="tooltip" data-placement="top" title="View or add comment"><%= article.comments.count %> <%= article.comments.count > 1 ? 'Comments' : 'Comment' %></span>
+<span class="btn p-3 comment__button" data-bs-toggle="modal" data-bs-target="#article_<%=article.id%>Comments" data-toggle="tooltip" data-placement="top" title="View or add comment"><%= article.comments.count %> <%= article.comments.count > 1 ? 'Comments' : 'Comment' %></span>
 
 <!-- Modal -->
 <div class="modal fade" id="article_<%=article.id%>Comments" tabindex="-1" role="dialog" aria-labelledby="article_<%=article.id%>CommentsTitle" aria-hidden="true">
@@ -15,15 +15,18 @@
           <span>Be the first to comment on this article.</span>
         <% else %>
           <% article.comments.each do |comment| %>
-            <div class="border-bottom"><%= comment.body %>
+            <div class="border-bottom d-flex justify-content-between">
+              <%= comment.body %>
               <% if comment.commenter.to_i == current_user.try{id}.to_i %>
-                <%= link_to "Delete comment", article_comment_path(article, comment), method: :delete %>
+                <%= link_to article_comment_path(article, comment), method: :delete do %>
+                  <i class="bi bi-trash"></i>
+                <% end %>
               <% end %>
             </div>
           <% end %>
         <% end %>
         <%= form_with scope: :comment, url: article_comments_path(article) do |f| %>
-          <%= f.text_field :body, class: "form-control mt-3" %>
+          <%= f.text_field :body, class: "form-control mt-3", placeholder: 'Your comment here.' %>
           <%= f.submit 'Comment', class: "btn btn-secondary form-control" %>
         <% end %>
       </div>

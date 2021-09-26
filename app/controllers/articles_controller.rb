@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate!, except: [:index]
+  before_action :authenticate!, except: [:index, :show]
   before_action :find_article, only: [:show, :edit, :update, :delete]
   before_action :article_owner?, only:[:edit, :update, :delete]
 
@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:name, :body)
+    params.require(:article).permit(:name, :body, :image)
   end
 
   def find_article

@@ -50,6 +50,12 @@
   line-height: 1.6;
 }
 
+.article_writer {
+  color: gray;
+  font-size: smaller;
+  font-style: italic;
+}
+
 
 .article__new {
   text-decoration: none;
@@ -85,10 +91,10 @@
   color: var(--themeColor2) !important;
 }
 
-
+/* Article image*/
 .image__container {
   width: 100%;
-  min-height: 20em;
+  height: 20em;
   max-height: 500px;
   overflow: hidden;
   object-fit: cover;
@@ -101,5 +107,9 @@
 }
 
 .article__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }

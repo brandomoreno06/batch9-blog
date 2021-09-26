@@ -2,24 +2,26 @@
 
   <div class="error__messages">
     <% article.errors.full_messages.each do |message| %>
-      <p><%= message %></p>
+      <div><%= message %></div>
     <% end %>
   </div>
 
+  <%= f.file_field :image %>  
+  <%#= image_tag url_for(article.image)  %>
 
-  <p>
+  <div>
     <%= f.label :name, "Title" %><br/>
     <%= f.text_field :name %>  
-  </p>
+  </div>
 
 
-  <p>
+  <div>
     <%= f.label :body, "Content" %><br/>
     <%= f.text_area :body %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <%= f.submit class: "article__submit" %>
-  </p>
+  </div>
 
 </div>

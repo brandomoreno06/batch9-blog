@@ -1,4 +1,4 @@
-<% if current_user.try{id} == article.user_id %>
+<% if !current_user.nil? && current_user.id == article.user_id %>
   <%= link_to edit_article_path(article) do %>
     <i class="bi bi-pencil-square"></i>
   <% end %>
