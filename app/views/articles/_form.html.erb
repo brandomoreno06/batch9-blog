@@ -6,8 +6,7 @@
     <% end %>
   </div>
 
-  <%= f.file_field :image %>  
-  <%#= image_tag url_for(article.image)  %>
+  <%= f.file_field :image, class: "form-control", direct_upload: true %>  
 
   <div>
     <%= f.label :name, "Title" %><br/>
