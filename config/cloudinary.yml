@@ -1,0 +1,11 @@
+development: 
+  cloud_name: "blogify-app"
+  api_key: Rails.application.credetials[:api_key]
+  api_secret: Rails.application.credetials[:api_secret]
+  secure: true
+
+production:
+  cloud_name: "blogify-app"
+  api_key: Rails.application.credetials[:api_key]
+  api_secret: Rails.application.credetials[:api_key]
+  secure: true
