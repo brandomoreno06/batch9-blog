@@ -6,21 +6,27 @@
     <% end %>
   </div>
 
-  <%= f.file_field :image, class: "form-control", direct_upload: true %>  
+  <div class="mb-3">
+    <%= f.label :image, "Cover Photo" %><br/>
+    <%= f.file_field :image, class: "form-control", direct_upload: false %>
+  </div>
 
-  <div>
-    <%= f.label :name, "Title" %><br/>
+  <div class="mb-3">
+    <%= f.label :name, "Title/Name" %><br/>
     <%= f.text_field :name %>  
   </div>
 
 
-  <div>
-    <%= f.label :body, "Content" %><br/>
-    <%= f.text_area :body %>
+  <div class="mb-3">
+    <%= f.label :body, "Content/Body", class: 'mb-3' %><br/>
+    <%= f.rich_text_area :body %>
   </div>
 
-  <div>
-    <%= f.submit class: "article__submit" %>
+  <div class="mb-3">
+    <%= f.submit class: "btn btn-success article__submit" %>
+    <%= link_to 'Cancel Editing', dashboard_path, class: "btn btn-secondary container mt-3" %>
   </div>
 
 </div>
+
+<%= javascript_pack_tag 'trix_attachment' %>

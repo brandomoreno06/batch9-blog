@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   before_action :article_owner?, only:[:edit, :update, :delete]
 
   def index
-    @articles = Article.all
+    @articles = Article.all.with_rich_text_body
   end
 
 

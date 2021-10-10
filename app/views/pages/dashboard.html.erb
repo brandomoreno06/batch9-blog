@@ -9,14 +9,14 @@
   <div class="articles container d-flex flex-wrap">
     <% @articles.each do |article| %>
       <div class="container-fluid col-xs-12 col-sm-12 col-lg-5 mb-5 mt-5 p-0 article__container">
-          <div>
-            <div class="image__container">
-              <%= render 'articles/article_image', article: article %>
-            </div>
-            <%= render 'articles/article_peek', article: article %>
+        <div class="container-fluid p-0">
+          <div class="image__container">
+            <%= render 'articles/article_image', article: article %>
           </div>
-          <%= render 'articles/comment_modal', article: article %>
+          <%= render 'articles/article_peek', article: article %>
         </div>
+        <%= render 'articles/comment_modal', article: article %>
+      </div>
     <% end %>
   </div>
 </div>
