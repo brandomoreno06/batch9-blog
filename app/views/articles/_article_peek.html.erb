@@ -1,5 +1,5 @@
 <div class="article__item p-4">
-  <div class="article__content">
+  <div class="article__content p-1">
     <div class="article__content__header">
       <h2 class="article__name"><%= article.name %></h2>
       <div class="article__modify">
@@ -10,6 +10,6 @@
       </div>
     </div>
     <span class="article_writer"><%= User.find_by(id: article.user_id).try{username} %></span>
-    <%= truncate("<p>#{article.body}<p>", escape: false, length: 300, separator: ' ') %>
+    <%= strip_tags(article.body.to_s).truncate_words(40) %>
   </div>
 </div>

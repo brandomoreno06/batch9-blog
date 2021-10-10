@@ -4,7 +4,7 @@
   <div class="articles container d-flex flex-wrap">
     <% @articles.each do |article| %>
       <div class="container-fluid col-xs-12 col-sm-12 col-lg-5 mb-5 mt-5 p-0 article__container">
-        <div>
+        <div class="container-fluid p-0">
           <div class="image__container">
             <%= render 'article_image', article: article %>
           </div>
